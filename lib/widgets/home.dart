@@ -1,6 +1,6 @@
+import 'package:MYSShop/widgets/page_parent.dart';
 import 'package:MYSShop/utils/screen_utils.dart';
-import 'package:MYSShop/widgets/view/waiter_view.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:MYSShop/view/waiter_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +19,7 @@ class HomeState extends State<Home> {
     return Stack(
       children: [
         Offstage(
-          child: Text('Hello world.'),
+          child: PageParent(),
           offstage: showAd,
         ),
         Offstage(
@@ -27,7 +27,7 @@ class HomeState extends State<Home> {
             child: Stack(
               children: [
                 Image(
-                  image: AssetImage('images/lion.jpg'),
+                  image: AssetImage('assets/images/lion.jpg'),
                   width: double.infinity,
                   height: double.infinity,
                   fit: BoxFit.cover,
@@ -38,7 +38,11 @@ class HomeState extends State<Home> {
                     width: ScreenUtils.screenW(context),
                     child: Text(
                       '落花有意随流水,流水无心恋落花',
-                      style: TextStyle(fontSize: 15.0, color: Colors.white),
+                      style: TextStyle(
+                        fontSize: 15.0,
+                        color: Colors.white,
+                        fontFamily: 'ZhiMangXing',
+                      ),
                       textAlign: TextAlign.center,
                     ),
                   ),

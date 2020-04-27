@@ -8,18 +8,20 @@ void main() {
   if (Platform.isAndroid) {
     //设置Android头部的导航栏透明
     SystemUiOverlayStyle systemUiOverlayStyle =
-    SystemUiOverlayStyle(statusBarColor: Colors.transparent);
+        SystemUiOverlayStyle(statusBarColor: Colors.transparent);
     SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
   }
 }
 
 class MainApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return RestartWidget(
       child: MaterialApp(
-        theme: ThemeData(backgroundColor: Colors.white),
+        theme: ThemeData(
+          backgroundColor: Colors.white,
+          fontFamily: 'ZhiMangXing',
+        ),
         home: Scaffold(
           resizeToAvoidBottomPadding: false,
           body: Home(),
@@ -40,7 +42,7 @@ class RestartWidget extends StatefulWidget {
 
   static restartApp(BuildContext context) {
     final _RestartWidgetState state =
-    context.ancestorStateOfType(const TypeMatcher<_RestartWidgetState>());
+        context.ancestorStateOfType(const TypeMatcher<_RestartWidgetState>());
     state.restartApp();
   }
 
