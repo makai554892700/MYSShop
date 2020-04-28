@@ -1,3 +1,8 @@
+import 'package:MYSShop/pages/page_find.dart';
+import 'package:MYSShop/pages/page_home.dart';
+import 'package:MYSShop/pages/page_mine.dart';
+import 'package:MYSShop/pages/page_shop_card.dart';
+import 'package:MYSShop/pages/page_type.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -47,21 +52,11 @@ class PageParentState extends State<PageParent> {
     super.initState();
     if (pages == null) {
       pages = [
-        Center(
-          child: Text('测试1'),
-        ),
-        Center(
-          child: Text('测试2'),
-        ),
-        Center(
-          child: Text('测试3'),
-        ),
-        Center(
-          child: Text('测试4'),
-        ),
-        Center(
-          child: Text('测试5'),
-        ),
+        HomePage(),
+        TypePage(),
+        FindPage(),
+        ShopCardPage(),
+        MinePage(),
       ];
     }
     if (itemList == null) {
@@ -102,7 +97,7 @@ class PageParentState extends State<PageParent> {
           getPagesWidget(4),
         ],
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.blueGrey,
       bottomNavigationBar: BottomNavigationBar(
         items: itemList,
         onTap: (int index) {
