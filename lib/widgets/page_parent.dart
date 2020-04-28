@@ -72,7 +72,6 @@ class PageParentState extends State<PageParent> {
                 item.name,
                 style: TextStyle(
                   fontSize: 20.0,
-                  fontFamily: 'ZhiMangXing',
                 ),
               ),
               activeIcon: SvgPicture.asset(

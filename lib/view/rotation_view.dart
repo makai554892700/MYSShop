@@ -27,28 +27,35 @@ class RotationViewState extends State<RotationView> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 15.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(8.0),
+        ),
+      ),
+      clipBehavior: Clip.antiAlias,
       margin: EdgeInsets.symmetric(
         horizontal: 15.0,
         vertical: 5.0,
       ),
       child: ConstrainedBox(
-        constraints: new BoxConstraints.loose(
-          new Size(ScreenUtils.screenW(context), 100.0),
+        constraints: BoxConstraints.loose(
+          Size(ScreenUtils.screenW(context), 180.0),
         ),
         child: Swiper(
-          itemWidth: ScreenUtils.screenW(context),
-          itemHeight: 100.0,
+          loop: true,
+          autoplay: true,
           itemCount: dataList.length,
-          pagination: new SwiperPagination(
-            margin: new EdgeInsets.all(10.0),
+          pagination: SwiperPagination(
+            margin: EdgeInsets.all(10.0),
           ),
           itemBuilder: (BuildContext context, int index) {
             return CachedNetworkImage(
               imageUrl: "${dataList[index]}",
-              placeholder: (context, url) => new CircularProgressIndicator(),
-              errorWidget: (context, url, error) => new Icon(
-                Icons.error,
-              ),
+              fit: BoxFit.cover,
+              progressIndicatorBuilder: (context, url, downloadProgress) =>
+                  CircularProgressIndicator(value: downloadProgress.progress),
+              errorWidget: (context, url, error) => Icon(Icons.error),
             );
           },
         ),

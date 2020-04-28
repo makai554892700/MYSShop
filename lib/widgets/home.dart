@@ -39,9 +39,8 @@ class HomeState extends State<Home> {
                     child: Text(
                       '落花有意随流水,流水无心恋落花',
                       style: TextStyle(
-                        fontSize: 15.0,
+                        fontSize: 25.0,
                         color: Colors.white,
-                        fontFamily: 'ZhiMangXing',
                       ),
                       textAlign: TextAlign.center,
                     ),

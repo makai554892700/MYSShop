@@ -37,7 +37,9 @@ class WaiterState extends State<Waiter> {
       },
       child: Text(
         '${widget.seconds} s ${widget.text} >>',
-        style: TextStyle(fontSize: 12.0),
+        style: TextStyle(
+          fontSize: 24.0,
+        ),
       ),
     );
   }

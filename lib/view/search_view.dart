@@ -18,8 +18,8 @@ class SearchViewState extends State<SearchView> {
         height: 30,
         width: ScreenUtils.screenW(context),
         margin: EdgeInsets.symmetric(
-          horizontal: 20.0,
-          vertical: 10.0,
+          horizontal: 15.0,
+          vertical: 5.0,
         ),
         decoration: BoxDecoration(
           color: Colors.black12,
