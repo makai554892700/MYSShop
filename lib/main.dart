@@ -18,10 +18,10 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return RestartWidget(
       child: MaterialApp(
-        theme: ThemeData(
-          backgroundColor: Colors.white,
-          fontFamily: 'ZhiMangXing',
-        ),
+//        theme: ThemeData(
+//          backgroundColor: Colors.white,
+//          fontFamily: 'ZhiMangXing',
+//        ),
         home: Scaffold(
           resizeToAvoidBottomPadding: false,
           body: Home(),

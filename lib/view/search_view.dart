@@ -15,15 +15,17 @@ class SearchViewState extends State<SearchView> {
     return GestureDetector(
       onTap: () {},
       child: Container(
-        height: 30,
+        height: 40,
         width: ScreenUtils.screenW(context),
-        margin: EdgeInsets.symmetric(
-          horizontal: 15.0,
-          vertical: 5.0,
+        margin: EdgeInsets.fromLTRB(
+          15.0,
+          15.0,
+          15.0,
+          5.0,
         ),
         decoration: BoxDecoration(
           color: Colors.black12,
-          borderRadius: BorderRadius.circular(15.0),
+          borderRadius: BorderRadius.circular(20.0),
         ),
         padding: EdgeInsets.symmetric(
           horizontal: 15.0,
@@ -32,17 +34,19 @@ class SearchViewState extends State<SearchView> {
           children: [
             Icon(
               Icons.search,
-              size: 15.0,
+              size: 18.0,
               color: Colors.black38,
             ),
             Padding(
               padding: EdgeInsets.only(
-                left: 8.0,
+                left: 10.0,
               ),
               child: Text(
                 '搜索',
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  fontSize: 10.0,
+                  fontSize: 14.0,
                   color: Colors.black38,
                 ),
               ),

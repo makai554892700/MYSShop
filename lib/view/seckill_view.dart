@@ -116,7 +116,7 @@ class SecKillViewState extends State<SecKillView> {
 
   Widget getListItem() {
     return Container(
-      height: 120.0,
+      height: 130.0,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: itemNames.length,
@@ -137,9 +137,10 @@ class SecKillViewState extends State<SecKillView> {
 
   Widget getListView(
       String imageUrl, String title, double newPrice, double oldPrice) {
-    return Column(
-      children: [
-        Card(
+    return Column(children: [
+      Expanded(
+        flex: 6,
+        child: Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
               Radius.circular(3.0),
@@ -151,34 +152,49 @@ class SecKillViewState extends State<SecKillView> {
             vertical: 5.0,
           ),
           child: CachedNetworkImage(
-            height: 70.0,
             imageUrl: imageUrl,
+            fit: BoxFit.cover,
           ),
         ),
-        Text(
+      ),
+      Expanded(
+        flex: 1,
+        child: Text(
           title,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
           style: TextStyle(
-            fontSize: 14.0,
+            fontSize: 10.0,
             color: Colors.black,
           ),
         ),
-        Text(
-          "￥$newPrice",
-          style: TextStyle(
-            fontSize: 12.0,
-            fontWeight: FontWeight.bold,
-            color: Colors.red,
+      ),
+      Expanded(
+        flex: 1,
+        child: RichText(
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          text: TextSpan(
+            children: [
+              TextSpan(
+                text: "￥$newPrice",
+                style: TextStyle(
+                  fontSize: 10.0,
+                  color: Colors.red,
+                ),
+              ),
+              TextSpan(
+                text: "￥$oldPrice",
+                style: TextStyle(
+                  fontSize: 8.0,
+                  decoration: TextDecoration.lineThrough,
+                  color: Colors.black38,
+                ),
+              ),
+            ],
           ),
         ),
-        Text(
-          "￥$oldPrice",
-          style: TextStyle(
-            fontSize: 10.0,
-            decoration: TextDecoration.lineThrough,
-            color: Colors.black38,
-          ),
-        ),
-      ],
-    );
+      ),
+    ]);
   }
 }

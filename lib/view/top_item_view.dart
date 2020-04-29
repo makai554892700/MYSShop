@@ -86,6 +86,8 @@ class TopItemViewState extends State<TopItemView> {
                     child: Center(
                       child: Text(
                         nameList[index],
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontSize: 15.0,
                           color: Colors.black54,

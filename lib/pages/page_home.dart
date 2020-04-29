@@ -2,6 +2,7 @@ import 'package:MYSShop/view/assemble_view.dart';
 import 'package:MYSShop/view/rotation_view.dart';
 import 'package:MYSShop/view/search_view.dart';
 import 'package:MYSShop/view/seckill_view.dart';
+import 'package:MYSShop/view/simple_item_view.dart';
 import 'package:MYSShop/view/top_item_view.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -35,6 +36,7 @@ class HomePageState extends State<HomePage> {
     result.add(TopItemView());
     result.add(SecKillView());
     result.add(AssembleView());
+    result.add(SimpleItemView());
     for (int i = 0; i < 20; i++) {
       result.add(SearchView());
     }

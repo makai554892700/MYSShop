@@ -126,7 +126,7 @@ class AssembleViewState extends State<AssembleView> {
 
   Widget getListItem() {
     return Container(
-      height: 130.0,
+      height: 140.0,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: itemNames.length,
@@ -150,51 +150,70 @@ class AssembleViewState extends State<AssembleView> {
       double newPrice, double oldPrice) {
     return Column(
       children: [
-        Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(3.0),
+        Expanded(
+          flex: 6,
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(3.0),
+              ),
+            ),
+            clipBehavior: Clip.antiAlias,
+            margin: EdgeInsets.symmetric(
+              horizontal: 5.0,
+              vertical: 5.0,
+            ),
+            child: CachedNetworkImage(
+              imageUrl: imageUrl,
+              fit: BoxFit.cover,
             ),
           ),
-          clipBehavior: Clip.antiAlias,
-          margin: EdgeInsets.symmetric(
-            horizontal: 5.0,
-            vertical: 5.0,
-          ),
-          child: CachedNetworkImage(
-            height: 70.0,
-            imageUrl: imageUrl,
+        ),
+        Expanded(
+          flex: 1,
+          child: Text(
+            title,
+            style: TextStyle(
+              fontSize: 10.0,
+              color: Colors.black,
+            ),
           ),
         ),
-        Text(
-          title,
-          style: TextStyle(
-            fontSize: 14.0,
-            color: Colors.black,
+        Expanded(
+          flex: 1,
+          child: Center(
+            child: Text(
+              "$assembleCount 人团",
+              style: TextStyle(
+                fontSize: 8.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.red,
+              ),
+            ),
           ),
         ),
-        Text(
-          "$assembleCount 人团",
-          style: TextStyle(
-            fontSize: 10.0,
-            fontWeight: FontWeight.bold,
-            color: Colors.red,
-          ),
-        ),
-        Text(
-          "￥$newPrice",
-          style: TextStyle(
-            fontSize: 12.0,
-            fontWeight: FontWeight.bold,
-            color: Colors.red,
-          ),
-        ),
-        Text(
-          "￥$oldPrice",
-          style: TextStyle(
-            fontSize: 10.0,
-            decoration: TextDecoration.lineThrough,
-            color: Colors.black38,
+        Expanded(
+          flex: 1,
+          child: RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: "￥$newPrice",
+                  style: TextStyle(
+                    fontSize: 10.0,
+                    color: Colors.red,
+                  ),
+                ),
+                TextSpan(
+                  text: "￥$oldPrice",
+                  style: TextStyle(
+                    fontSize: 8.0,
+                    decoration: TextDecoration.lineThrough,
+                    color: Colors.black38,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ],
