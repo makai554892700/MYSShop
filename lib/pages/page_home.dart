@@ -37,9 +37,6 @@ class HomePageState extends State<HomePage> {
     result.add(SecKillView());
     result.add(AssembleView());
     result.add(SimpleItemView());
-    for (int i = 0; i < 20; i++) {
-      result.add(SearchView());
-    }
     return result;
   }
 }

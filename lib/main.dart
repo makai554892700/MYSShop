@@ -22,6 +22,7 @@ class MainApp extends StatelessWidget {
 //          backgroundColor: Colors.white,
 //          fontFamily: 'ZhiMangXing',
 //        ),
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
           resizeToAvoidBottomPadding: false,
           body: Home(),
