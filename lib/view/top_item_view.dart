@@ -38,7 +38,7 @@ class TopItemViewState extends State<TopItemView> {
     "PLUS会员",
   ];
   int lineItemCount = 5;
-  double lineVSpace = 5, lineHSpace = 10, paddingTB = 10.0, paddingLR = 20.0;
+  double lineVSpace = 5, lineHSpace = 10, paddingTB = 10.0, paddingLR = 15.0;
 
   @override
   Widget build(BuildContext context) {
