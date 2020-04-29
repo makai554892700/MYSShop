@@ -32,7 +32,6 @@ class SimpleItemViewState extends State<SimpleItemView> {
 
   @override
   Widget build(BuildContext context) {
-    print("build.dataLen=${datas.length}");
     itemHeight = (ScreenUtils.screenW(context) -
             (paddingLR * 2) -
             (lineHSpace * (lineItemCount - 1))) /

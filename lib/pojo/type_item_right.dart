@@ -3,9 +3,9 @@ import 'package:flutter/cupertino.dart';
 class TypeItemRight {
   int itemId;
   String topImage;
-  Map<String, ItemRight> items;
+  Map<String, List<ItemRight>> items;
 
-  TypeItemRight({Key key, this.itemId, this.topImage});
+  TypeItemRight({Key key, this.itemId, this.topImage, this.items});
 }
 
 class ItemRight {
