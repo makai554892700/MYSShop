@@ -71,7 +71,7 @@ class PageParentState extends State<PageParent> {
               title: Text(
                 item.name,
                 style: TextStyle(
-                  fontSize: 20.0,
+                  fontSize: 16.0,
                 ),
               ),
               activeIcon: SvgPicture.asset(

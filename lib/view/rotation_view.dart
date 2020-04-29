@@ -13,15 +13,14 @@ class RotationView extends StatefulWidget {
 
 class RotationViewState extends State<RotationView> {
   List dataList = [
-    "https://picsum.photos/250?image=1",
-    "https://picsum.photos/250?image=2",
-    "https://picsum.photos/250?image=3",
-    "https://picsum.photos/250?image=4",
-    "https://picsum.photos/250?image=5",
-    "https://picsum.photos/250?image=6",
-    "https://picsum.photos/250?image=7",
-    "https://picsum.photos/250?image=8",
-    "https://picsum.photos/250?image=9",
+    "https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/110964/39/3311/96625/5ea7a8c3Edafd27a4/c7a03c411115e3e0.jpg.dpg",
+    "https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/64512/17/14296/88305/5dbbf1d2Ec5281fb6/bb2dbc7e17920b54.jpg!cr_1125x445_0_171!q70.jpg.dpg",
+    "https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/91538/35/1275/99931/5dbbf626Ed9e6f56c/6f5681b0d1362012.jpg!cr_1125x445_0_171!q70.jpg.dpg",
+    "https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/31641/34/14721/271059/5cbf578dEb78e94a8/08450440e3537e76.jpg!cr_1125x445_0_171!q70.jpg.dpg",
+    "https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/57282/11/14947/102122/5dbc0203E786482fb/0658ac16db09833d.jpg!cr_1125x445_0_171!q70.jpg.dpg",
+    "https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/31162/17/1128/101786/5c46ead8E22ee9740/f66061da227c1965.jpg!cr_1125x445_0_171!q70.jpg.dpg",
+    "https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/115901/29/2471/181803/5ea23e40E5d4fabb7/0262b3258d15ec57.jpg!cr_1125x445_0_171!q70.jpg.dpg",
+    "https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/109280/3/14487/86263/5ea6ee6eEc9a3fffa/51a1e536db7fca88.jpg!cr_1125x445_0_171!q70.jpg.dpg",
   ];
 
   @override

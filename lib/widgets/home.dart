@@ -33,7 +33,7 @@ class HomeState extends State<Home> {
                   fit: BoxFit.cover,
                 ),
                 Positioned(
-                  bottom: 80.0,
+                  bottom: ScreenUtils.screenH(context) / 3,
                   child: SizedBox(
                     width: ScreenUtils.screenW(context),
                     child: Text(
