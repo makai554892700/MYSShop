@@ -1,6 +1,8 @@
+import 'package:MYSShop/pojo/common_item.dart';
 import 'package:MYSShop/pojo/type_item_left.dart';
 import 'package:MYSShop/pojo/type_item_right.dart';
 import 'package:MYSShop/utils/screen_utils.dart';
+import 'package:MYSShop/utils/view_utils.dart';
 import 'package:MYSShop/view/search_view.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
@@ -140,26 +142,13 @@ class TypePageState extends State<TypePage> {
   }
 
   Widget getListItem(String key, List<ItemRight> value) {
-    int lineItemCount = 3;
-    double lineVSpace = 5,
-        lineHSpace = 10,
-        paddingTB = 10.0,
-        paddingLR = 15.0,
-        itemHeight,
-        lineCount,
-        height;
-    itemHeight = (ScreenUtils.screenW(context) * 3 / 4 -
-            (paddingLR * 2) -
-            (lineHSpace * (lineItemCount - 1))) /
-        lineItemCount;
-    lineCount = value.length / lineItemCount;
-    if ((lineCount) % 1 != 0) {
-      lineCount = (lineCount.toInt() + 1).toDouble();
-    }
-    height = (lineCount * itemHeight / 0.7) +
-        (lineVSpace * (lineCount - 1)) +
-        (paddingTB * 2);
     return Card(
+      margin: EdgeInsets.fromLTRB(
+        10.0,
+        5.0,
+        10.0,
+        5.0,
+      ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
           Radius.circular(5.0),
@@ -176,72 +165,32 @@ class TypePageState extends State<TypePage> {
               child: Text(key),
             ),
           ),
-          Container(
-            width: double.infinity,
-            height: height,
-            padding: EdgeInsets.symmetric(
-              vertical: paddingTB,
-              horizontal: paddingLR,
-            ),
-            child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: lineItemCount,
-                crossAxisSpacing: lineHSpace,
-                mainAxisSpacing: lineVSpace,
-                childAspectRatio: 0.7,
-              ),
-//        physics: AlwaysScrollableScrollPhysics(),
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: value.length,
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  child: ConstrainedBox(
-                    child: getListView(value[index], itemHeight),
-                    constraints: BoxConstraints.expand(),
-                  ),
-                  onTap: () {
-                    print(index);
-                  },
-                );
-              },
-            ),
+          ViewUtils.getItemList(
+            context,
+            changeData(value),
+            (CommonItem commonItem) {
+              print("SecKillListener commonItem=$commonItem");
+            },
           ),
         ],
       ),
     );
   }
 
-  Widget getListView(ItemRight data, double itemHeight) {
-    return Column(
-      children: [
-        Expanded(
-          flex: 18,
-          child: CachedNetworkImage(
-            imageUrl: data.itemImage,
-            fit: BoxFit.cover,
-            width: itemHeight,
-          ),
+  CommonItemParent changeData(List<ItemRight> value) {
+    List<CommonItem> datas = [];
+    value.forEach((element) {
+      datas.add(
+        CommonItem(
+          gotoType: CommonItem.type_goto_store,
+          itemId: element.itemId,
+          imageUrl: element.itemImage,
+          title: element.itemName,
         ),
-        Expanded(
-          flex: 3,
-          child: Padding(
-            padding: EdgeInsets.only(left: 15.0),
-            child: Align(
-              alignment: Alignment.topLeft,
-              child: Text(
-                data.itemName,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  fontSize: 12.0,
-                  color: Colors.black,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
+      );
+    });
+    return CommonItemParent(
+        itemType: CommonItemParent.type_item_type, datas: datas);
   }
 
   @override

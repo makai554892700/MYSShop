@@ -1,4 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:MYSShop/pojo/common_item.dart';
+import 'package:MYSShop/utils/view_utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -10,57 +11,13 @@ class AssembleView extends StatefulWidget {
 }
 
 class AssembleViewState extends State<AssembleView> {
-  int secKillTime = 1000;
-  List itemImages = [
-    "https://gw.alicdn.com/bao/uploaded/i1/699882163/O1CN01DMMwz51RqhH0cbp8l_!!0-item_pic.jpg_290x10000Q75.jpg_.webp",
-    "https://gw.alicdn.com/bao/uploaded/i1/449513896/O1CN01CD85XP1eePYQCGSG9_!!0-item_pic.jpg_290x10000Q75.jpg_.webp",
-    "https://gw.alicdn.com/bao/uploaded/i1/TB1d2pjRpXXXXavXXXXXXXXXXXX_!!0-item_pic.jpg_290x10000Q75.jpg_.webp",
-    "https://gw.alicdn.com/bao/uploaded/i3/1664941371/O1CN01ddPJEi1LzxbSSKuQa_!!0-item_pic.jpg_290x10000Q75.jpg_.webp",
-    "https://gw.alicdn.com/bao/uploaded/i2/2778883906/O1CN01uZwVKy1eizcWPCFpK_!!0-item_pic.jpg_290x10000Q75.jpg_.webp",
-    "https://gw.alicdn.com/bao/uploaded/i1/3424653238/O1CN01tcQb931Zn31ax5bTo_!!3424653238.jpg_290x10000Q75.jpg_.webp",
-    "https://gw.alicdn.com/bao/uploaded/i3/1966697100/O1CN01pBs82H22JqdE9hJPi_!!0-item_pic.jpg_290x10000Q75.jpg_.webp",
-    "https://gw.alicdn.com/bao/uploaded/i4/2066946881/O1CN01VC3iJK20hXugRIr2Y_!!0-item_pic.jpg_290x10000Q75.jpg_.webp",
-  ],
-      itemNames = [
-    "测试商品1",
-    "测试商品2",
-    "测试商品3",
-    "测试商品4",
-    "测试商品5",
-    "测试商品6",
-    "测试商品7",
-    "测试商品8",
-  ],
-      itemAssembles = [
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-  ],
-      itemNewPrices = [
-    20.0,
-    120.0,
-    1120.0,
-    11120.0,
-    220.0,
-    320.0,
-    420.0,
-    520.0,
-  ],
-      itemOldPrices = [
-    28.0,
-    128.0,
-    1128.0,
-    111128.0,
-    328.0,
-    428.0,
-    528.0,
-    628.0,
-  ];
+  CommonItemParent commonItemParent;
+
+  @override
+  void initState() {
+    commonItemParent = getData();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -118,103 +75,104 @@ class AssembleViewState extends State<AssembleView> {
               ],
             ),
           ),
-          getListItem(),
+          Container(
+            height: 140.0,
+            child: ViewUtils.getItemList(
+              context,
+              commonItemParent,
+              (CommonItem commonItem) {
+                print("SecKillListener commonItem=$commonItem");
+              },
+            ),
+          ),
         ],
       ),
     );
   }
 
-  Widget getListItem() {
-    return Container(
-      height: 140.0,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: itemNames.length,
-        itemBuilder: (BuildContext buildContext, int index) {
-          return Container(
-            width: 80.0,
-            child: getListView(
-              itemImages[index],
-              itemNames[index],
-              itemAssembles[index],
-              itemNewPrices[index],
-              itemOldPrices[index],
-            ),
-          );
-        },
-      ),
-    );
-  }
-
-  Widget getListView(String imageUrl, String title, int assembleCount,
-      double newPrice, double oldPrice) {
-    return Column(
-      children: [
-        Expanded(
-          flex: 6,
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(3.0),
-              ),
-            ),
-            clipBehavior: Clip.antiAlias,
-            margin: EdgeInsets.symmetric(
-              horizontal: 5.0,
-              vertical: 5.0,
-            ),
-            child: CachedNetworkImage(
-              imageUrl: imageUrl,
-              fit: BoxFit.cover,
-            ),
-          ),
+  CommonItemParent getData() {
+    return CommonItemParent(
+      itemType: CommonItemParent.type_item_assemble,
+      datas: [
+        CommonItem(
+          gotoType: CommonItem.type_goto_goods,
+          itemId: 1,
+          imageUrl:
+              "https://gw.alicdn.com/bao/uploaded/i1/699882163/O1CN01DMMwz51RqhH0cbp8l_!!0-item_pic.jpg_290x10000Q75.jpg_.webp",
+          title: "测试商品1",
+          newPrice: 18.0,
+          oldPrice: 28.0,
+          assembleCount: 2,
         ),
-        Expanded(
-          flex: 1,
-          child: Text(
-            title,
-            style: TextStyle(
-              fontSize: 10.0,
-              color: Colors.black,
-            ),
-          ),
+        CommonItem(
+          gotoType: CommonItem.type_goto_goods,
+          itemId: 1,
+          imageUrl:
+              "https://gw.alicdn.com/bao/uploaded/i1/449513896/O1CN01CD85XP1eePYQCGSG9_!!0-item_pic.jpg_290x10000Q75.jpg_.webp",
+          title: "测试商品2",
+          newPrice: 11118.0,
+          oldPrice: 11128.0,
+          assembleCount: 2,
         ),
-        Expanded(
-          flex: 1,
-          child: Center(
-            child: Text(
-              "$assembleCount 人团",
-              style: TextStyle(
-                fontSize: 8.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.red,
-              ),
-            ),
-          ),
+        CommonItem(
+          gotoType: CommonItem.type_goto_goods,
+          itemId: 1,
+          imageUrl:
+              "https://gw.alicdn.com/bao/uploaded/i1/TB1d2pjRpXXXXavXXXXXXXXXXXX_!!0-item_pic.jpg_290x10000Q75.jpg_.webp",
+          title: "测试商品3",
+          newPrice: 1118.0,
+          oldPrice: 1128.0,
+          assembleCount: 2,
         ),
-        Expanded(
-          flex: 1,
-          child: RichText(
-            text: TextSpan(
-              children: [
-                TextSpan(
-                  text: "￥$newPrice",
-                  style: TextStyle(
-                    fontSize: 10.0,
-                    color: Colors.red,
-                  ),
-                ),
-                TextSpan(
-                  text: "￥$oldPrice",
-                  style: TextStyle(
-                    fontSize: 8.0,
-                    decoration: TextDecoration.lineThrough,
-                    color: Colors.black38,
-                  ),
-                ),
-              ],
-            ),
-          ),
+        CommonItem(
+          gotoType: CommonItem.type_goto_goods,
+          itemId: 1,
+          imageUrl:
+              "https://gw.alicdn.com/bao/uploaded/i3/1664941371/O1CN01ddPJEi1LzxbSSKuQa_!!0-item_pic.jpg_290x10000Q75.jpg_.webp",
+          title: "测试商品4",
+          newPrice: 118.0,
+          oldPrice: 128.0,
+          assembleCount: 2,
+        ),
+        CommonItem(
+          gotoType: CommonItem.type_goto_goods,
+          itemId: 1,
+          imageUrl:
+              "https://gw.alicdn.com/bao/uploaded/i2/2778883906/O1CN01uZwVKy1eizcWPCFpK_!!0-item_pic.jpg_290x10000Q75.jpg_.webp",
+          title: "测试商品5",
+          newPrice: 318.0,
+          oldPrice: 328.0,
+          assembleCount: 2,
+        ),
+        CommonItem(
+          gotoType: CommonItem.type_goto_goods,
+          itemId: 1,
+          imageUrl:
+              "https://gw.alicdn.com/bao/uploaded/i1/3424653238/O1CN01tcQb931Zn31ax5bTo_!!3424653238.jpg_290x10000Q75.jpg_.webp",
+          title: "测试商品6",
+          newPrice: 418.0,
+          oldPrice: 428.0,
+          assembleCount: 2,
+        ),
+        CommonItem(
+          gotoType: CommonItem.type_goto_goods,
+          itemId: 1,
+          imageUrl:
+              "https://gw.alicdn.com/bao/uploaded/i3/1966697100/O1CN01pBs82H22JqdE9hJPi_!!0-item_pic.jpg_290x10000Q75.jpg_.webp",
+          title: "测试商品7",
+          newPrice: 518.0,
+          oldPrice: 528.0,
+          assembleCount: 2,
+        ),
+        CommonItem(
+          gotoType: CommonItem.type_goto_goods,
+          itemId: 1,
+          imageUrl:
+              "https://gw.alicdn.com/bao/uploaded/i4/2066946881/O1CN01VC3iJK20hXugRIr2Y_!!0-item_pic.jpg_290x10000Q75.jpg_.webp",
+          title: "测试商品8",
+          newPrice: 618.0,
+          oldPrice: 628.0,
+          assembleCount: 2,
         ),
       ],
     );
