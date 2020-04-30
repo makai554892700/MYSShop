@@ -32,7 +32,6 @@ class SimpleItemViewState extends State<SimpleItemView> {
             overflow: TextOverflow.clip,
             style: TextStyle(
               fontSize: 15.0,
-              color: Colors.white,
             ),
           ),
           margin: EdgeInsets.only(

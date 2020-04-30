@@ -1,7 +1,6 @@
 import 'package:MYSShop/pojo/common_item.dart';
 import 'package:MYSShop/pojo/type_item_left.dart';
 import 'package:MYSShop/pojo/type_item_right.dart';
-import 'package:MYSShop/utils/screen_utils.dart';
 import 'package:MYSShop/utils/view_utils.dart';
 import 'package:MYSShop/view/search_view.dart';
 import 'package:cached_network_image/cached_network_image.dart';
