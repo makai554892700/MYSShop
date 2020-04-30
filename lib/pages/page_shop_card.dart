@@ -35,21 +35,29 @@ class ShopCardPageState extends State<ShopCardPage> {
                 pinned: false,
                 floating: true,
               ),
-              SliverGrid(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 10.0,
-                  childAspectRatio: 0.8,
-                  mainAxisSpacing: 10.0,
-                ),
-                delegate: SliverChildBuilderDelegate(
-                  (BuildContext context, int index) {
-                    return ViewUtils.getNormalItem(
-                        commonItemParent.datas[index], (commonItem) {
-                      print("onCardClick$commonItem");
-                    });
-                  },
-                  childCount: commonItemParent.datas.length,
+              SliverPersistentHeader(
+                delegate: CardSliverAppBar(expandedHeight: 56.0),
+                pinned: false,
+                floating: true,
+              ),
+              SliverPadding(
+                padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
+                sliver: SliverGrid(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 10.0,
+                    childAspectRatio: 0.8,
+                    mainAxisSpacing: 10.0,
+                  ),
+                  delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) {
+                      return ViewUtils.getNormalItem(
+                          commonItemParent.datas[index], (commonItem) {
+                        print("onCardClick$commonItem");
+                      });
+                    },
+                    childCount: commonItemParent.datas.length,
+                  ),
                 ),
               ),
             ],

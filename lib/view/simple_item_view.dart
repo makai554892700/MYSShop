@@ -35,8 +35,8 @@ class SimpleItemViewState extends State<SimpleItemView> {
             ),
           ),
           margin: EdgeInsets.only(
-            top: 5.0,
-            bottom: 5.0,
+            top: 15.0,
+            bottom: 15.0,
           ),
         ),
         Container(

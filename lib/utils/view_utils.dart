@@ -103,6 +103,7 @@ class ViewUtils {
       ),
       physics: NeverScrollableScrollPhysics(),
       itemCount: datas.length,
+      padding: EdgeInsets.only(top: 0),
       itemBuilder: (context, index) {
         return getItemView(
           itemType,
