@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:MYSShop/pojo/common_item.dart';
 import 'package:MYSShop/utils/screen_utils.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -131,6 +133,20 @@ class ViewUtils {
   }
 
   static Widget getTopItem(CommonItem data, ItemClickListener itemListener) {
+    Widget image;
+    if (Platform.isIOS || Platform.isAndroid) {
+      image = CachedNetworkImage(
+        imageUrl: data.imageUrl,
+        fit: BoxFit.cover,
+      );
+    } else {
+      image = Image(
+        image: NetworkImage(
+          data.imageUrl,
+        ),
+        fit: BoxFit.cover,
+      );
+    }
     return GestureDetector(
       onTap: () {
         itemListener(data);
@@ -141,10 +157,7 @@ class ViewUtils {
           children: [
             Expanded(
               flex: 2,
-              child: CachedNetworkImage(
-                imageUrl: data.imageUrl,
-                fit: BoxFit.cover,
-              ),
+              child: image,
             ),
             Expanded(
               flex: 1,
@@ -168,6 +181,20 @@ class ViewUtils {
 
   static Widget getSecKillItem(
       CommonItem data, ItemClickListener itemListener) {
+    Widget image;
+    if (Platform.isIOS || Platform.isAndroid) {
+      image = CachedNetworkImage(
+        imageUrl: data.imageUrl,
+        fit: BoxFit.cover,
+      );
+    } else {
+      image = Image(
+        image: NetworkImage(
+          data.imageUrl,
+        ),
+        fit: BoxFit.cover,
+      );
+    }
     return GestureDetector(
       onTap: () {
         itemListener(data);
@@ -189,10 +216,7 @@ class ViewUtils {
                   horizontal: 5.0,
                   vertical: 5.0,
                 ),
-                child: CachedNetworkImage(
-                  imageUrl: data.imageUrl,
-                  fit: BoxFit.cover,
-                ),
+                child: image,
               ),
             ),
             Expanded(
@@ -241,6 +265,20 @@ class ViewUtils {
 
   static Widget getAssembleItem(
       CommonItem data, ItemClickListener itemListener) {
+    Widget image;
+    if (Platform.isIOS || Platform.isAndroid) {
+      image = CachedNetworkImage(
+        imageUrl: data.imageUrl,
+        fit: BoxFit.cover,
+      );
+    } else {
+      image = Image(
+        image: NetworkImage(
+          data.imageUrl,
+        ),
+        fit: BoxFit.cover,
+      );
+    }
     return GestureDetector(
       onTap: () {
         itemListener(data);
@@ -262,10 +300,7 @@ class ViewUtils {
                   horizontal: 5.0,
                   vertical: 5.0,
                 ),
-                child: CachedNetworkImage(
-                  imageUrl: data.imageUrl,
-                  fit: BoxFit.cover,
-                ),
+                child: image,
               ),
             ),
             Expanded(
@@ -322,6 +357,20 @@ class ViewUtils {
   }
 
   static Widget getTypeItem(CommonItem data, ItemClickListener itemListener) {
+    Widget image;
+    if (Platform.isIOS || Platform.isAndroid) {
+      image = CachedNetworkImage(
+        imageUrl: data.imageUrl,
+        fit: BoxFit.cover,
+      );
+    } else {
+      image = Image(
+        image: NetworkImage(
+          data.imageUrl,
+        ),
+        fit: BoxFit.cover,
+      );
+    }
     return GestureDetector(
       onTap: () {
         itemListener(data);
@@ -332,11 +381,7 @@ class ViewUtils {
           children: [
             Expanded(
               flex: 20,
-              child: CachedNetworkImage(
-                imageUrl: data.imageUrl,
-                fit: BoxFit.cover,
-//            width: itemHeight,
-              ),
+              child: image,
             ),
             Expanded(
               flex: 5,
@@ -363,6 +408,20 @@ class ViewUtils {
   }
 
   static Widget getNormalItem(CommonItem data, ItemClickListener itemListener) {
+    Widget image;
+    if (Platform.isIOS || Platform.isAndroid) {
+      image = CachedNetworkImage(
+        imageUrl: data.imageUrl,
+        fit: BoxFit.cover,
+      );
+    } else {
+      image = Image(
+        image: NetworkImage(
+          data.imageUrl,
+        ),
+        fit: BoxFit.cover,
+      );
+    }
     return GestureDetector(
       onTap: () {
         itemListener(data);
@@ -381,11 +440,7 @@ class ViewUtils {
             children: [
               Expanded(
                 flex: 20,
-                child: CachedNetworkImage(
-                  imageUrl: data.imageUrl,
-                  fit: BoxFit.cover,
-//              width: itemHeight,
-                ),
+                child: image,
               ),
               Expanded(
                 flex: 3,

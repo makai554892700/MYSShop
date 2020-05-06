@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:MYSShop/pojo/common_item.dart';
 import 'package:MYSShop/pojo/type_item_left.dart';
 import 'package:MYSShop/pojo/type_item_right.dart';
@@ -99,6 +101,21 @@ class TypePageState extends State<TypePage> {
   Widget getRightBody() {
     TypeItemLeft currentTypeItemLeft = leftItems[leftCheck];
     TypeItemRight currentTypeItemRight = rightItems[currentTypeItemLeft.id];
+    Widget image;
+    if (Platform.isIOS || Platform.isAndroid) {
+      image = CachedNetworkImage(
+        imageUrl: currentTypeItemRight.topImage,
+        height: 110.0,
+        fit: BoxFit.cover,
+      );
+    } else {
+      image = Image(
+        image: NetworkImage(
+          currentTypeItemRight.topImage,
+        ),
+        height: 110.0,
+      );
+    }
     return Container(
       child: ListView.builder(
         scrollDirection: Axis.vertical,
@@ -116,12 +133,7 @@ class TypePageState extends State<TypePage> {
                 horizontal: 10.0,
                 vertical: 15.0,
               ),
-              child: CachedNetworkImage(
-                imageUrl: currentTypeItemRight.topImage,
-                height: 110.0,
-//                width: double.infinity,
-                fit: BoxFit.cover,
-              ),
+              child: image,
             );
           }
           List<String> keys = [];

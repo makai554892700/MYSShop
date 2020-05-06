@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:MYSShop/utils/screen_utils.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
@@ -49,13 +51,24 @@ class RotationViewState extends State<RotationView> {
             margin: EdgeInsets.all(10.0),
           ),
           itemBuilder: (BuildContext context, int index) {
-            return CachedNetworkImage(
-              imageUrl: "${dataList[index]}",
-              fit: BoxFit.cover,
-              progressIndicatorBuilder: (context, url, downloadProgress) =>
-                  CircularProgressIndicator(value: downloadProgress.progress),
-              errorWidget: (context, url, error) => Icon(Icons.error),
-            );
+            Widget image;
+            if (Platform.isIOS || Platform.isAndroid) {
+              image = CachedNetworkImage(
+                imageUrl: "${dataList[index]}",
+                fit: BoxFit.cover,
+                progressIndicatorBuilder: (context, url, downloadProgress) =>
+                    CircularProgressIndicator(value: downloadProgress.progress),
+                errorWidget: (context, url, error) => Icon(Icons.error),
+              );
+            } else {
+              image = Image(
+                image: NetworkImage(
+                  dataList[index],
+                ),
+                fit: BoxFit.cover,
+              );
+            }
+            return image;
           },
         ),
       ),
