@@ -14,6 +14,7 @@ class RotationView extends StatefulWidget {
 }
 
 class RotationViewState extends State<RotationView> {
+  RotationViewState({Key? key});
   List dataList = [
     "https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/110964/39/3311/96625/5ea7a8c3Edafd27a4/c7a03c411115e3e0.jpg.dpg",
     "https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/64512/17/14296/88305/5dbbf1d2Ec5281fb6/bb2dbc7e17920b54.jpg!cr_1125x445_0_171!q70.jpg.dpg",

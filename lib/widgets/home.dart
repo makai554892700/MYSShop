@@ -1,10 +1,11 @@
 import 'package:MYSShop/widgets/page_parent.dart';
 import 'package:MYSShop/utils/screen_utils.dart';
 import 'package:MYSShop/view/waiter_view.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
+  const Home({Key? key}) : super(key: key);
+
   @override
   State createState() {
     return HomeState();
@@ -12,6 +13,8 @@ class Home extends StatefulWidget {
 }
 
 class HomeState extends State<Home> {
+  HomeState({Key? key});
+
   bool showAd = true;
 
   @override

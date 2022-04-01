@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 
 class CommonItemParent {
-  int itemType;
-  List<CommonItem> datas;
+  int? itemType;
+  List<CommonItem>? datas;
 
   CommonItemParent({
-    Key key,
-    @required this.itemType,
-    @required this.datas,
+    Key? key,
+    this.itemType,
+    this.datas,
   });
 
   static const int type_item_top = 1, //顶部分类 logo + title
@@ -19,12 +19,12 @@ class CommonItemParent {
 }
 
 class CommonItem {
-  int gotoType, itemId, assembleCount;
-  String imageUrl, title, desc;
-  double newPrice, oldPrice;
+  int? gotoType, itemId, assembleCount;
+  String? imageUrl, title, desc;
+  double? newPrice, oldPrice;
 
   CommonItem(
-      {Key key,
+      {Key? key,
       this.gotoType, //item进入页面类型
       this.itemId,
       this.assembleCount, //参团人数
@@ -43,15 +43,15 @@ class CommonItem {
 }
 
 class CommonItemSpace {
-  int lineCount; //每行item个数
-  double lineVSpace, //item上下间距
+  int? lineCount; //每行item个数
+  double? lineVSpace, //item上下间距
       lineHSpace, //item左右间距
       height, //总高
       width, //总宽
       ratio; //高宽比例
-  bool isHorizontal; //是否为横向list
+  bool? isHorizontal; //是否为横向list
   CommonItemSpace({
-    Key key,
+    Key? key,
     this.lineCount,
     this.lineVSpace,
     this.lineHSpace,

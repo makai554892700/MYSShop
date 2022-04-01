@@ -11,7 +11,8 @@ class AssembleView extends StatefulWidget {
 }
 
 class AssembleViewState extends State<AssembleView> {
-  CommonItemParent commonItemParent;
+  AssembleViewState({Key? key});
+  late CommonItemParent commonItemParent;
 
   @override
   void initState() {

@@ -3,7 +3,6 @@ import 'package:MYSShop/pages/page_home.dart';
 import 'package:MYSShop/pages/page_mine.dart';
 import 'package:MYSShop/pages/page_shop_card.dart';
 import 'package:MYSShop/pages/page_type.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -15,10 +14,12 @@ class PageParent extends StatefulWidget {
 }
 
 class PageParentState extends State<PageParent> {
+  PageParentState({Key? key});
+
   int selectIndex = 0;
   Color baseColor = Color.fromARGB(255, 0, 188, 96);
-  List<Widget> pages;
-  List<BottomNavigationBarItem> itemList;
+  List<Widget> pages = [];
+  List<BottomNavigationBarItem> itemList = [];
   final itemNames = [
     BottomItem(
       '首页',
@@ -50,7 +51,7 @@ class PageParentState extends State<PageParent> {
   @override
   void initState() {
     super.initState();
-    if (pages == null) {
+    if (pages.isEmpty) {
       pages = [
         HomePage(),
         TypePage(),
@@ -59,7 +60,7 @@ class PageParentState extends State<PageParent> {
         MinePage(),
       ];
     }
-    if (itemList == null) {
+    if (itemList.isEmpty) {
       itemList = itemNames
           .map((item) => BottomNavigationBarItem(
               icon: SvgPicture.asset(
@@ -68,12 +69,7 @@ class PageParentState extends State<PageParent> {
                 width: 20.0,
                 height: 20.0,
               ),
-              title: Text(
-                item.name,
-                style: TextStyle(
-                  fontSize: 16.0,
-                ),
-              ),
+              label: item.name,
               activeIcon: SvgPicture.asset(
                 item.activeIcon,
                 color: baseColor,

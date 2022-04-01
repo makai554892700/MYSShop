@@ -10,6 +10,7 @@ class SearchView extends StatefulWidget {
 }
 
 class SearchViewState extends State<SearchView> {
+  SearchViewState({Key? key});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

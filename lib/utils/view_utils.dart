@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:MYSShop/pojo/common_item.dart';
 import 'package:MYSShop/utils/screen_utils.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ViewUtils {
@@ -12,21 +11,22 @@ class ViewUtils {
     switch (commonItemParent.itemType) {
       case CommonItemParent.type_item_top:
         return getGridView(
-          commonItemParent.itemType,
-          commonItemParent.datas,
+          commonItemParent.itemType!,
+          commonItemParent.datas!,
           CommonItemSpace(
             width: ScreenUtils.screenW(context),
             lineCount: 5,
             lineHSpace: 10.0,
             lineVSpace: 5.0,
             ratio: 1.0,
+            height: 0,
           ),
           itemListener,
         );
       case CommonItemParent.type_item_secKill:
         return getListView(
-          commonItemParent.itemType,
-          commonItemParent.datas,
+          commonItemParent.itemType!,
+          commonItemParent.datas!,
           CommonItemSpace(
             isHorizontal: true,
             width: 90.0,
@@ -35,8 +35,8 @@ class ViewUtils {
         );
       case CommonItemParent.type_item_assemble:
         return getListView(
-          commonItemParent.itemType,
-          commonItemParent.datas,
+          commonItemParent.itemType!,
+          commonItemParent.datas!,
           CommonItemSpace(
             isHorizontal: true,
             width: 90.0,
@@ -45,8 +45,8 @@ class ViewUtils {
         );
       case CommonItemParent.type_item_type:
         return getGridView(
-          commonItemParent.itemType,
-          commonItemParent.datas,
+          commonItemParent.itemType!,
+          commonItemParent.datas!,
           CommonItemSpace(
             width: ScreenUtils.screenW(context),
             lineCount: 3,
@@ -58,8 +58,8 @@ class ViewUtils {
         );
       default:
         return getGridView(
-          commonItemParent.itemType,
-          commonItemParent.datas,
+          commonItemParent.itemType!,
+          commonItemParent.datas!,
           CommonItemSpace(
             width: ScreenUtils.screenW(context),
             lineCount: 2,
@@ -77,7 +77,7 @@ class ViewUtils {
     return ListView.builder(
       shrinkWrap: true,
       scrollDirection:
-          commonItemSpace.isHorizontal ? Axis.horizontal : Axis.vertical,
+          commonItemSpace.isHorizontal! ? Axis.horizontal : Axis.vertical,
       itemCount: datas.length,
       physics: NeverScrollableScrollPhysics(),
       itemBuilder: (BuildContext buildContext, int index) {
@@ -98,10 +98,10 @@ class ViewUtils {
     return GridView.builder(
       shrinkWrap: true,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: commonItemSpace.lineCount,
-        crossAxisSpacing: commonItemSpace.lineHSpace,
-        mainAxisSpacing: commonItemSpace.lineVSpace,
-        childAspectRatio: commonItemSpace.ratio,
+        crossAxisCount: commonItemSpace.lineCount!,
+        crossAxisSpacing: commonItemSpace.lineHSpace!,
+        mainAxisSpacing: commonItemSpace.lineVSpace!,
+        childAspectRatio: commonItemSpace.ratio!,
       ),
       physics: NeverScrollableScrollPhysics(),
       itemCount: datas.length,
@@ -136,13 +136,13 @@ class ViewUtils {
     Widget image;
     if (Platform.isIOS || Platform.isAndroid) {
       image = CachedNetworkImage(
-        imageUrl: data.imageUrl,
+        imageUrl: data.imageUrl!,
         fit: BoxFit.cover,
       );
     } else {
       image = Image(
         image: NetworkImage(
-          data.imageUrl,
+          data.imageUrl!,
         ),
         fit: BoxFit.cover,
       );
@@ -163,7 +163,7 @@ class ViewUtils {
               flex: 1,
               child: Center(
                 child: Text(
-                  data.title,
+                  data.title!,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
@@ -184,13 +184,13 @@ class ViewUtils {
     Widget image;
     if (Platform.isIOS || Platform.isAndroid) {
       image = CachedNetworkImage(
-        imageUrl: data.imageUrl,
+        imageUrl: data.imageUrl!,
         fit: BoxFit.cover,
       );
     } else {
       image = Image(
         image: NetworkImage(
-          data.imageUrl,
+          data.imageUrl!,
         ),
         fit: BoxFit.cover,
       );
@@ -222,7 +222,7 @@ class ViewUtils {
             Expanded(
               flex: 1,
               child: Text(
-                data.title,
+                data.title!,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
@@ -268,13 +268,13 @@ class ViewUtils {
     Widget image;
     if (Platform.isIOS || Platform.isAndroid) {
       image = CachedNetworkImage(
-        imageUrl: data.imageUrl,
+        imageUrl: data.imageUrl!,
         fit: BoxFit.cover,
       );
     } else {
       image = Image(
         image: NetworkImage(
-          data.imageUrl,
+          data.imageUrl!,
         ),
         fit: BoxFit.cover,
       );
@@ -306,7 +306,7 @@ class ViewUtils {
             Expanded(
               flex: 1,
               child: Text(
-                data.title,
+                data.title!,
                 style: TextStyle(
                   fontSize: 10.0,
                   color: Colors.black,
@@ -360,13 +360,13 @@ class ViewUtils {
     Widget image;
     if (Platform.isIOS || Platform.isAndroid) {
       image = CachedNetworkImage(
-        imageUrl: data.imageUrl,
+        imageUrl: data.imageUrl!,
         fit: BoxFit.cover,
       );
     } else {
       image = Image(
         image: NetworkImage(
-          data.imageUrl,
+          data.imageUrl!,
         ),
         fit: BoxFit.cover,
       );
@@ -390,7 +390,7 @@ class ViewUtils {
                 child: Align(
                   alignment: Alignment.topLeft,
                   child: Text(
-                    data.title,
+                    data.title!,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
@@ -411,13 +411,13 @@ class ViewUtils {
     Widget image;
     if (Platform.isIOS || Platform.isAndroid) {
       image = CachedNetworkImage(
-        imageUrl: data.imageUrl,
+        imageUrl: data.imageUrl!,
         fit: BoxFit.cover,
       );
     } else {
       image = Image(
         image: NetworkImage(
-          data.imageUrl,
+          data.imageUrl!,
         ),
         fit: BoxFit.cover,
       );
@@ -449,7 +449,7 @@ class ViewUtils {
                   child: Align(
                     alignment: Alignment.topLeft,
                     child: Text(
-                      data.title,
+                      data.title!,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(

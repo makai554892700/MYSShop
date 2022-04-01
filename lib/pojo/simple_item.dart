@@ -4,5 +4,9 @@ class SimpleItem {
   String itemImage, itemName;
   double itemPrice;
 
-  SimpleItem({Key key, this.itemImage, this.itemName, this.itemPrice});
+  SimpleItem(
+      {Key? key,
+      required this.itemImage,
+      required this.itemName,
+      required this.itemPrice});
 }

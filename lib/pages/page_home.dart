@@ -17,6 +17,7 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
+  HomePageState({Key? key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +26,7 @@ class HomePageState extends State<HomePage> {
         enablePullUp: true,
         header: MaterialClassicHeader(),
         footer: CustomFooter(
-          builder: (BuildContext context, LoadStatus mode) {
+          builder: (BuildContext context, LoadStatus? mode) {
             Widget body;
             if (mode == LoadStatus.idle) {
               body = Text("pull up load");
@@ -71,7 +72,7 @@ class HomePageState extends State<HomePage> {
   }
 
   List<Widget> getBody() {
-    List<Widget> result = List();
+    List<Widget> result = [];
     result.add(Container(
       color: Colors.blueAccent,
       height: ScreenUtils.getStatusBarH(context),

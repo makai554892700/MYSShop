@@ -15,7 +15,8 @@ class ShopCardPage extends StatefulWidget {
 }
 
 class ShopCardPageState extends State<ShopCardPage> {
-  CommonItemParent commonItemParent;
+  ShopCardPageState({Key? key});
+  late CommonItemParent commonItemParent;
 
   @override
   void initState() {
@@ -52,11 +53,11 @@ class ShopCardPageState extends State<ShopCardPage> {
                   delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
                       return ViewUtils.getNormalItem(
-                          commonItemParent.datas[index], (commonItem) {
+                          commonItemParent.datas![index], (commonItem) {
                         print("onCardClick$commonItem");
                       });
                     },
-                    childCount: commonItemParent.datas.length,
+                    childCount: commonItemParent.datas!.length,
                   ),
                 ),
               ),
@@ -66,7 +67,7 @@ class ShopCardPageState extends State<ShopCardPage> {
           enablePullUp: true,
           header: WaterDropHeader(),
           footer: CustomFooter(
-            builder: (BuildContext context, LoadStatus mode) {
+            builder: (BuildContext context, LoadStatus? mode) {
               Widget body;
               if (mode == LoadStatus.idle) {
                 body = Text("pull up load");
@@ -110,7 +111,7 @@ class ShopCardPageState extends State<ShopCardPage> {
   }
 
   List<Widget> getBody() {
-    List<Widget> result = List();
+    List<Widget> result = [];
     result.add(Container(
       color: Colors.blueAccent,
       height: ScreenUtils.getStatusBarH(context),
@@ -198,7 +199,7 @@ class ShopCardPageState extends State<ShopCardPage> {
 class CardSliverAppBar extends SliverPersistentHeaderDelegate {
   final double expandedHeight;
 
-  CardSliverAppBar({@required this.expandedHeight});
+  CardSliverAppBar({required this.expandedHeight});
 
   @override
   Widget build(

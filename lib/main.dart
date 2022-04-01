@@ -1,10 +1,13 @@
+import "package:flutter/material.dart";
 import 'package:MYSShop/widgets/home.dart';
-import 'package:flutter/material.dart';
+
 import 'dart:io';
 import 'package:flutter/services.dart';
 
 void main() {
-  runApp(MainApp());
+  runApp(RestartWidget(
+    child: const MainApp(),
+  ));
   if (Platform.isAndroid) {
     //设置Android头部的导航栏透明
     SystemUiOverlayStyle systemUiOverlayStyle =
@@ -14,37 +17,28 @@ void main() {
 }
 
 class MainApp extends StatelessWidget {
+  const MainApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return RestartWidget(
-      child: MaterialApp(
-//        theme: ThemeData(
-//          backgroundColor: Colors.white,
-//          fontFamily: 'ZhiMangXing',
-//        ),
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-          resizeToAvoidBottomPadding: false,
-          body: Home(),
-        ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: const Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: Home(),
       ),
+      theme: ThemeData(),
     );
   }
 }
 
-///这个组件用来重新加载整个child Widget的。当我们需要重启APP的时候，可以使用这个方案
-///https://stackoverflow.com/questions/50115311/flutter-how-to-force-an-application-restart-in-production-mode
 class RestartWidget extends StatefulWidget {
   final Widget child;
 
-  RestartWidget({Key key, @required this.child})
-      : assert(child != null),
-        super(key: key);
+  RestartWidget({required this.child});
 
-  static restartApp(BuildContext context) {
-    final _RestartWidgetState state =
-        context.ancestorStateOfType(const TypeMatcher<_RestartWidgetState>());
-    state.restartApp();
+  static void restartApp(BuildContext context) {
+    context.findAncestorStateOfType<_RestartWidgetState>()?.restartApp();
   }
 
   @override
@@ -62,7 +56,7 @@ class _RestartWidgetState extends State<RestartWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return KeyedSubtree(
       key: key,
       child: widget.child,
     );

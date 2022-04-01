@@ -12,6 +12,8 @@ class FindPage extends StatefulWidget {
 }
 
 class FindPageState extends State<FindPage> {
+  FindPageState({Key? key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +22,7 @@ class FindPageState extends State<FindPage> {
         enablePullUp: true,
         header: WaterDropHeader(),
         footer: CustomFooter(
-          builder: (BuildContext context, LoadStatus mode) {
+          builder: (BuildContext context, LoadStatus? mode) {
             Widget body;
             if (mode == LoadStatus.idle) {
               body = Text("pull up load");
@@ -66,7 +68,7 @@ class FindPageState extends State<FindPage> {
   }
 
   List<Widget> getBody() {
-    List<Widget> result = List();
+    List<Widget> result = [];
     result.add(Container(
       color: Colors.blueAccent,
       height: ScreenUtils.getStatusBarH(context),

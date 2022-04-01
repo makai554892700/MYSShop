@@ -8,10 +8,10 @@ class Waiter extends StatefulWidget {
   int seconds;
 
   Waiter(
-      {Key key,
-      @required this.text,
-      @required this.seconds,
-      @required this.onCountDownFinishCallBack})
+      {Key? key,
+      required this.text,
+      required this.seconds,
+      required this.onCountDownFinishCallBack})
       : super(key: key);
 
   @override
@@ -21,7 +21,8 @@ class Waiter extends StatefulWidget {
 }
 
 class WaiterState extends State<Waiter> {
-  Timer timer;
+  WaiterState({Key? key});
+  late Timer timer;
 
   @override
   void initState() {
@@ -59,6 +60,6 @@ class WaiterState extends State<Waiter> {
 
   void cancelTimer() {
     widget.onCountDownFinishCallBack(true);
-    timer?.cancel();
+    timer.cancel();
   }
 }

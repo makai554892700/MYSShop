@@ -4,5 +4,5 @@ class TypeItemLeft {
   int id;
   String itemName;
 
-  TypeItemLeft({Key key, this.id, this.itemName});
+  TypeItemLeft({Key? key, required this.id, required this.itemName});
 }

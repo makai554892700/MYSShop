@@ -11,7 +11,8 @@ class SecKillView extends StatefulWidget {
 }
 
 class SecKillViewState extends State<SecKillView> {
-  CommonItemParent commonItemParent;
+  SecKillViewState({Key? key});
+  late CommonItemParent commonItemParent;
 
   @override
   void initState() {

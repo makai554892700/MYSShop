@@ -17,9 +17,10 @@ class TypePage extends StatefulWidget {
 }
 
 class TypePageState extends State<TypePage> {
+  TypePageState({Key? key});
   int leftCheck = 0;
-  List<TypeItemLeft> leftItems;
-  Map<int, TypeItemRight> rightItems;
+  late List<TypeItemLeft> leftItems;
+  late Map<int, TypeItemRight> rightItems;
 
   @override
   Widget build(BuildContext context) {
@@ -100,18 +101,18 @@ class TypePageState extends State<TypePage> {
 
   Widget getRightBody() {
     TypeItemLeft currentTypeItemLeft = leftItems[leftCheck];
-    TypeItemRight currentTypeItemRight = rightItems[currentTypeItemLeft.id];
+    TypeItemRight? currentTypeItemRight = rightItems[currentTypeItemLeft.id];
     Widget image;
     if (Platform.isIOS || Platform.isAndroid) {
       image = CachedNetworkImage(
-        imageUrl: currentTypeItemRight.topImage,
+        imageUrl: currentTypeItemRight!.topImage,
         height: 110.0,
         fit: BoxFit.cover,
       );
     } else {
       image = Image(
         image: NetworkImage(
-          currentTypeItemRight.topImage,
+          currentTypeItemRight!.topImage,
         ),
         height: 110.0,
       );
@@ -144,7 +145,7 @@ class TypePageState extends State<TypePage> {
             width: 80.0,
             child: getListItem(
               keys[index - 1],
-              currentTypeItemRight.items[keys[index - 1]],
+              currentTypeItemRight.items[keys[index - 1]]!,
             ),
           );
         },

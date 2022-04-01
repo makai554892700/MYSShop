@@ -13,7 +13,8 @@ class SimpleItemView extends StatefulWidget {
 }
 
 class SimpleItemViewState extends State<SimpleItemView> {
-  CommonItemParent commonItemParent;
+  SimpleItemViewState({Key? key});
+  late CommonItemParent commonItemParent;
 
   @override
   void initState() {
@@ -138,7 +139,7 @@ class SimpleItemViewState extends State<SimpleItemView> {
       await Future.delayed(Duration(seconds: 3), () {
         isLoading = false;
         setState(() {
-          commonItemParent.datas.addAll([
+          commonItemParent.datas?.addAll([
             CommonItem(
               gotoType: CommonItem.type_goto_goods,
               itemId: 1,

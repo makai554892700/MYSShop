@@ -10,6 +10,7 @@ class MinePage extends StatefulWidget {
 }
 
 class MinePageState extends State<MinePage> {
+  MinePageState({Key? key});
   @override
   Widget build(BuildContext context) {
     return Center(

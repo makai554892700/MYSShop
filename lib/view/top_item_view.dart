@@ -11,7 +11,8 @@ class TopItemView extends StatefulWidget {
 }
 
 class TopItemViewState extends State<TopItemView> {
-  CommonItemParent commonItemParent;
+  TopItemViewState({Key? key});
+  late CommonItemParent commonItemParent;
 
   @override
   void initState() {
